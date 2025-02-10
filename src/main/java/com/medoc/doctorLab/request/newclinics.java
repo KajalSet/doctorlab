@@ -10,4 +10,5 @@ public class newclinics {
     private String address;
     private double rating;
     private double distance;
+    
 }
