@@ -97,10 +97,27 @@ public class JwtTokenProvider {
 	    return claims.getSubject(); // This will return the subject -mobile number
 	}
 
+	public Long getUserIdFromToken(String token) {
+		return extractClaims(token).get("id", Long.class);
+	}
+
+	public String getAddressFromToken(String token) {
+		return extractClaims(token).get("address", String.class);
+	}
+
+}
 	
 	
-	
-	
+
+
+
+
+
+
+
+
+
+
 	
 	
 	
@@ -141,12 +158,4 @@ public class JwtTokenProvider {
 //		return claims.getSubject();
 //	}
 //
-	public Long getUserIdFromToken(String token) {
-		return extractClaims(token).get("id", Long.class);
-	}
-
-	public String getAddressFromToken(String token) {
-		return extractClaims(token).get("address", String.class);
-	}
-
-}
+	
