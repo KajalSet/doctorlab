@@ -5,10 +5,11 @@ public class AutheticationResponse {
 	 private String token;
 	 private String refreshToken;
 	 private String message;
+	 private String name;
+	 private String mobile;   
 	    
 	    
-	    
-		public AutheticationResponse() {
+		public AutheticationResponse(String string) {
 			super();
 			// TODO Auto-generated constructor stub
 		}
@@ -33,5 +34,23 @@ public class AutheticationResponse {
 		}
 		 public String getRefreshToken() { return refreshToken; }
 		    public void setRefreshToken(String refreshToken) { this.refreshToken = refreshToken; }
+
+			public String getName() {
+				return name;
+			}
+
+			public void setName(String name) {
+				this.name = name;
+			}
+
+			public String getMobile() {
+				return mobile;
+			}
+
+			public void setMobile(String mobile) {
+				this.mobile = mobile;
+			}
+		    
+		    
 
 }

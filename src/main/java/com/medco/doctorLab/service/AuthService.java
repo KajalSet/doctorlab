@@ -20,8 +20,6 @@ public class AuthService {
 
 
 	
-	
-	
 	public AutheticationResponse login(AuthenticationRequest authenticationRequest) {
         String mobile = authenticationRequest.getMobileNumber();
         String otp = authenticationRequest.getOtp();
@@ -53,6 +51,32 @@ public class AuthService {
         // Return the login response containing the token and a success message.
         return new AutheticationResponse(token, "Login successful");
     }
+
+
+
+	public AutheticationResponse setMpin(AuthenticationRequest authenticationRequest) {
+		
+		 if (authenticationRequest.getMobileNumber() == null || authenticationRequest.getMobileNumber().isEmpty()) {
+		        throw new IllegalArgumentException("Mobile number cannot be empty.");
+		    }
+
+		    if (authenticationRequest.getMpin() == null || authenticationRequest.getMpin().isEmpty()) {
+		        throw new IllegalArgumentException("MPIN cannot be empty.");
+		    }
+		    
+		    User user = userRepository.findByMobile(authenticationRequest.getMobileNumber());
+		    if (user == null) {
+		        throw new RuntimeException("User not found.");
+		    }
+		    try {
+		        userRepository.save(user);
+		        
+		        return new AutheticationResponse("MPIN set successfully!");
+		    } catch (Exception e) {
+		        throw new RuntimeException("Error saving MPIN: " + e.getMessage());
+		    }
+		
+	}
 
 	
 	
