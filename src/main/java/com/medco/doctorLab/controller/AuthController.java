@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,7 +49,16 @@ public class AuthController {
        
         
     }
-}
+    
+    //pass string mobileno and mpin 
+   
+    @PostMapping("/set-mpin")
+    public ResponseEntity<AutheticationResponse> setMpin(@RequestBody AuthenticationRequest request) {
+        AutheticationResponse response = authService.setMpin(request);
+        return ResponseEntity.ok(response);
+    }
+
+	}
 	
 	
 	
