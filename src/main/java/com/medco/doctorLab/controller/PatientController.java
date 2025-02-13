@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.medco.doctorLab.models.Doctor;
@@ -64,18 +65,55 @@ public class PatientController {
    	public ResponseEntity<List<Doctor>>getAllDoctors(){
    		List<Doctor>listOfDoctors=patientService.getAllDoctors();
    		return ResponseEntity.ok(listOfDoctors );
-   		
-   		
+   			
    	}
    	
   //pass patient id
 //list of doctors should come while fetching this
-//    @GetMapping("/cancelled/{PatientId}")
-//    public ResponseEntity<List<Doctor>> getCancelledAppointments(@PathVariable Long PatientId) {
-//        List<Doctor> cancelledAppointments = patientService.getCancelledAppointment(PatientId);
-//        return ResponseEntity.ok(cancelledAppointments);
-//    }
-    
+  
+   @GetMapping("/cancelled/{patientId}") 
+   public ResponseEntity<List<Doctor>> getCancelledAppointments(@PathVariable Long patientId) {
+       List<Doctor> cancelledDoctors = patientService.getCancelledAppointment(patientId);
+       return ResponseEntity.ok(cancelledDoctors);
+       
+   }
+
+   @GetMapping("/upcoming/{patientId}")
+   public ResponseEntity<List<Doctor>> getUpcomingAppointments(@PathVariable Long patientId) {
+       List<Doctor> upcomingDoctors = patientService.getUpcomingAppointments(patientId);
+       return ResponseEntity.ok(upcomingDoctors);
+   }
+
+   @GetMapping("/completed/{patientId}")
+   public ResponseEntity<List<Doctor>> getCompletedAppointments(@PathVariable Long patientId) {
+       List<Doctor> completedDoctors = patientService.getCompletedAppointments(patientId);
+       return ResponseEntity.ok(completedDoctors);
+   }
+
+ 
+ //api for reshedule appoitnment
+ // help and support
+   
+   
+   
+   
+   
+   
+   
+   
+  
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 //   	@GetMapping(value="/upcoming/{PatientId}")
 //   	public ResponseEntity<List<Doctor>>getUpcomingAppoitment(@PathVariable Long PatientId){
 //   		List<Doctor> upcomingAppoitment=patientService.getUpcomingAppoitment(PatientId);
