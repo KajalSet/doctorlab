@@ -1,7 +1,6 @@
 package com.medco.doctorLab.controller;
 
 import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,6 +35,11 @@ public class PatientController {
    		return new ResponseEntity<Patient>(HttpStatus.CREATED);
    	}
    
+    @GetMapping("/{id}")
+    public ResponseEntity<Patient> getPatient(@PathVariable Long id) {
+        Patient patient = patientService.getPatientById(id);
+        return ResponseEntity.ok(patient);
+    }
 
    	@DeleteMapping(value="/delete/{id}")
    	public ResponseEntity<Patient>deletePatient(@PathVariable Long id){

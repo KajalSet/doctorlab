@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,7 @@ import com.medco.doctorLab.repo.PatientRepository;
 
 
 @Service
+@Transactional
 public class PatientService {
 	
 	 @Autowired
@@ -33,6 +36,11 @@ public class PatientService {
 		
 	    return patientRepository.save(patient); 
 	}
+	
+	public Patient getPatientById(Long id) {
+        return patientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Patient not found"));
+    }
 
 	public boolean deletePatient(Long id) {
 		

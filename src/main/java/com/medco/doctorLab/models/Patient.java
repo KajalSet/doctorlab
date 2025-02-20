@@ -2,6 +2,7 @@ package com.medco.doctorLab.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,9 +28,10 @@ public class Patient {
     private String writeProblem;
    
     
-    @OneToMany(mappedBy = "patients")
+    @OneToMany(mappedBy = "patients", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference  // Helps manage serialization
     private List<Doctor> doctors;
+    
     
 	public String getBookingFor() {
 		return bookingFor;
@@ -69,6 +71,10 @@ public class Patient {
 		this.age = age;
 		this.gender = gender;
 		this.writeProblem = writeProblem;
+	}
+	public Patient() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
     
     
