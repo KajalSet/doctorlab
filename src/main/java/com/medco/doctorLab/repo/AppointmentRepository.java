@@ -8,6 +8,6 @@ import com.medco.doctorLab.models.Appointment;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Long>{
 	
-	List<Appointment> findByPatientIdAndStatus(Long patientId, String status);
+	List<Appointment> findByPatientIdAndStatus(Long patientId, String string);
 
 }

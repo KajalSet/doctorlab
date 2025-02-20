@@ -1,4 +1,54 @@
-//package com.medco.doctorLab.controller;
+package com.medco.doctorLab.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.medco.doctorLab.pojo.request.AuthenticationRequest;
+import com.medco.doctorLab.response.AuthenticationResponse;
+import com.medco.doctorLab.service.AuthService;
+
+
+@CrossOrigin(origins="*")
+@RestController
+@RequestMapping(value="api/auth")
+public class AuthController {
+	
+	@Autowired
+	 private  AuthService authService;
+	 
+	
+	 @PostMapping("/login")
+     public ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequest request) {
+     AuthenticationResponse response = authService.login(request);
+     return ResponseEntity.ok(response);   
+     
+ }
+	 @PostMapping("/setmpin")
+	 public String setMpin(@RequestParam Long id, @RequestParam String mpin) {
+	     return authService.setMpin(id, mpin);
+	 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //
 //
 //import org.springframework.http.ResponseEntity;

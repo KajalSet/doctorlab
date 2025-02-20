@@ -10,13 +10,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 import lombok.Data;
 
-@Data
 @Entity
-@Table(name = "doctor")
+@Table()
 public class Doctor {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -27,23 +26,44 @@ public class Doctor {
 	
 	
 	
+	public Doctor() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	@ManyToOne
 	@JoinColumn(name = "patient_id")
 	@JsonIgnore // Prevents infinite recursion
 	private Patient patient;
-	
+
+
+
 	public Long getId() {
 		return id;
 	}
+
+
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+
+
 	public String getName() {
 		return name;
 	}
+
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
+
 	public String getDepartment() {
 		return department;
 	}
@@ -79,4 +99,15 @@ public class Doctor {
 	}
 
 
+
+	public Doctor(Long id, String name, String department, String about, Patient patient) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.department = department;
+		this.about = about;
+		this.patient = patient;
+	}
+	
+	
 }

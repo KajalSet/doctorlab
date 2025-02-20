@@ -10,10 +10,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	
 
-	User findByMobile(String mobileNumber);
-
-	//User findByMobile(String mobileNumber);
-
+	User save(User newUser);
 	
 
 

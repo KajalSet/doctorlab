@@ -14,68 +14,85 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
-@Data
 @Entity
-@Table(name = "patient")
+@Table()
 public class Patient {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	private String bookingFor;
-	private String name;
-    private int age;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    
+    private String name;
     private String gender;
-    private String writeProblem;
+    private int age;
+    private String reason;
    
-    
-    @OneToMany(mappedBy = "patients", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference  // Helps manage serialization
-    private List<Doctor> doctors;
-    
-    
-	public String getBookingFor() {
-		return bookingFor;
-	}
-	public void setBookingFor(String bookingFor) {
-		this.bookingFor = bookingFor;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public String getWriteProblem() {
-		return writeProblem;
-	}
-	public void setWriteProblem(String writeProblem) {
-		this.writeProblem = writeProblem;
-	}
-	public Patient(Long id, String bookingFor, String name, int age, String gender, String writeProblem) {
-		super();
-		this.id = id;
-		this.bookingFor = bookingFor;
-		this.name = name;
-		this.age = age;
-		this.gender = gender;
-		this.writeProblem = writeProblem;
-	}
+
 	public Patient() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-    
+
+
+	public Patient(Long id, String name, String gender, int age,String reason) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+		this.reason=reason;
+	}
+
+
+	public String getReason() {
+		return reason;
+	}
+
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getGender() {
+		return gender;
+	}
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+
+	public int getAge() {
+		return age;
+	}
+
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+ 
     
 }

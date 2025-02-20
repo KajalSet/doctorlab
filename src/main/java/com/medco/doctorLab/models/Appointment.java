@@ -9,10 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "appointments")
-public class Appointment {
 
+
+@Entity
+@Table
+public class Appointment {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,10 +31,6 @@ public class Appointment {
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public Patient getPatient() {
@@ -60,6 +57,9 @@ public class Appointment {
 		this.status = status;
 	}
 
-    
+	public void setId(Long id) {
+		this.id = id;
+	}
+
     
 }
